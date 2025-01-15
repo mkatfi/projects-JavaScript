@@ -22,7 +22,21 @@ const Gameboard = (() => {
   return { resetBoard, getBoard, setCell };
 })();
 
+function showPopup(message) {
+  const popupMessage = document.getElementById('popupMessage');
+  const popupOverlay = document.getElementById('popupOverlay');
+  popupMessage.textContent = message; // Set the message
+  popupOverlay.classList.add('active'); // Show the popup
+}
 
+// Function to close the popup
+function closePopup() {
+  document.getElementById("restartButton").addEventListener("click", () => {
+    GameController.startGame("Player 1", "Player 2");
+  });
+  const popupOverlay = document.getElementById('popupOverlay');
+  popupOverlay.classList.remove('active'); // Hide the popup
+}
 
 const GameController = (() => {
   let player1, player2, currentPlayer, gameOver;
@@ -34,6 +48,7 @@ const GameController = (() => {
     gameOver = false;
     Gameboard.resetBoard();
     DisplayController.updateBoard();
+    
     DisplayController.setStatus(`${currentPlayer.name} Turn`, `${currentPlayer.marker}`);
   };
 
@@ -42,12 +57,16 @@ const GameController = (() => {
       DisplayController.updateBoard();
       if (checkWinner()) {
         gameOver = true;
-        DisplayController.setStatus(`${currentPlayer.name} Wins!`, `${currentPlayer.marker}`);
+        closePopup();
+        showPopup(`🎉 Congratulations!  << ${currentPlayer.name} >> 🏆 Wins! (${currentPlayer.marker})`);
+        // DisplayController.setStatus(`${currentPlayer.name} Wins!`, `${currentPlayer.marker}`);
         return;
       }
       if (Gameboard.getBoard().every((cell) => cell !== "")) {
         gameOver = true;
-        DisplayController.setStatus("It's a Draw!");
+        // DisplayController.setStatus("It's a Draw!");
+        closePopup();
+        showPopup("It's a Draw! 1/2 ");
         return;
       }
       currentPlayer = currentPlayer === player1 ? player2 : player1;
@@ -88,7 +107,7 @@ const DisplayController = (() => {
 
   const setStatus = (message , turn) => {
     statusDiv.textContent = message;
-    console.log(turn);
+    // console.log(turn);
     if (turn === "X"){
       document.querySelector(".bg").style.left = "0px";
     }
@@ -109,6 +128,6 @@ document.getElementById("startButton").addEventListener("click", () => {
   GameController.startGame(player1Name, player2Name);
 });
 
-document.getElementById("restartButton").addEventListener("click", () => {
-  GameController.startGame("Player 1", "Player 2");
-});
+// document.getElementById("restartButton").addEventListener("click", () => {
+//   GameController.startGame("Player 1", "Player 2");
+// });
