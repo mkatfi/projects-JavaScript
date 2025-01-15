@@ -1,0 +1,146 @@
+ * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family:'Permanent Marker', cursive, sans-serif;
+    line-height: 1.6;
+    padding: 20px;
+    background-color: #f0f2f5;
+    /* background-image: url("../image/pngtree-robot-xo-concept-logo-design-png-image_3917750.jpg");
+    background-size: cover; */
+}
+
+header{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+}
+header img{
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+.content {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+#player1Name, #player2Name {
+    margin: 15px 0;
+    padding: 15px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+input {
+    padding: 8px;
+    margin: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+#gameBoard{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 40px auto;
+  max-width: 350px;
+}
+
+.cell {
+    aspect-ratio: 1;
+    background: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 4em;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.cell:hover {
+    background: #e5e6e7;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 3.5px;
+    background: #007bff;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+/* .status {
+    margin: 20px 0;
+    font-size: 20em;
+    margin-top: 20px;
+    font-weight: bold;
+} */
+.content h3{
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+
+.align{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.turn-container{
+  width: 170px;
+  height: 80px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  position: relative;
+}
+
+.turn-container h3{
+  margin: 0;
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+.turn-container .turn-box{
+  font-size: 1.6rem;
+  font-weight: 700;
+  width: 85px;
+  height: 45px;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+
+  
+}
+
+.turn-container .turn-box:nth-child(even){
+  border-right: none;
+}
+
+.bg{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 85px;
+  height: 45px;
+  background-color: #FF2E63;
+  border-radius: 8px;
+  z-index: -1;
+}

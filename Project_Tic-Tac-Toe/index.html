@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/index.css">
+  <title>Tic Tac Toe</title>
+</head>
+<body>
+  <header>  
+    <img src="./image/pngtree-robot-xo-concept-logo-design-png-image_3917750.jpg" alt="">
+    <h1>Tic Tac Toe</h1>
+  </header>
+  <div id="controls">
+    <div class="content">
+        <input id="player1Name" type="text" placeholder="Player 1 Name" required>
+        <input id="player2Name" type="text" placeholder="Player 2 Name" required>
+        <button id="startButton">Start Game</button>
+        <div class="turn-container">
+          <h3 id="status"></h3>
+          <div class="turn-box align">X</div>
+          <div class="turn-box align">O</div>
+          <div class="bg"></div>
+        </div>
+        <div id="gameBoard"></div>
+        <button id="restartButton">Restart Game</button>
+    </div>
+  </div>
+  <script src="./js/main.js"></script>
+</body>
+</html>
