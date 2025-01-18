@@ -9,8 +9,6 @@ body {
     line-height: 1.6;
     padding: 20px;
     background-color: #f0f2f5;
-    /* background-image: url("../image/pngtree-robot-xo-concept-logo-design-png-image_3917750.jpg");
-    background-size: cover; */
 }
 
 header{
@@ -82,12 +80,6 @@ button:hover {
     background: #0056b3;
 }
 
-/* .status {
-    margin: 20px 0;
-    font-size: 20em;
-    margin-top: 20px;
-    font-weight: bold;
-} */
 .content h3{
   font-size: 20px;
   font-weight: bold;
@@ -178,19 +170,4 @@ button:hover {
 
 .popup h2 {
   margin: 0 0 10px;
-}
-
-.popup button {
-  margin-top: 15px;
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-.popup button:hover {
-  background-color: #0056b3;
 }
