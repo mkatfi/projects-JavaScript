@@ -95,16 +95,25 @@ function deleteTask(taskId) {
     console.log(projects.ids);
     console.log(taskId);
     arrayOfTasks = arrayOfTasks.filter((task) => task.id != taskId);
-    if(projects.length){
-       
-        projects.forEach((project) => {
-            project.ids = project.boxs.filter((task) => task.ids != taskId);
-        });
-      
-    }
+    
+    // projects = projects.filter(project => project.ids !== taskId);
+    projects.splice(
+        projects.findIndex(project => project.ids === taskId), 
+        1
+    )
+
+    // Remove the corresponding box element from the DOM
+    document.querySelectorAll(".box").forEach((boxElement) => {
+        if (boxElement.getAttribute("data-id") == taskId) {
+            boxElement.remove();
+            deleteTaskbox(boxElement.getAttribute("data-id"));
+        }
+    });
     updateLocalStorage();
-    updateLocalStoragebox();
+    updateLocalStoragebox(); 
 }
+
+
 
 
 function deleteTaskbox(taskId) {
@@ -122,7 +131,6 @@ function openTaskModal(taskId) {
     modal.setAttribute("data-id", taskId);
 }
 
-let id = modal.getAttribute("data-id");
 // Handle form submission
 formAddTask.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -131,7 +139,14 @@ formAddTask.addEventListener("submit", (e) => {
     let date = formAddTask.querySelector("input[name='date']").value.trim();
     let priority = document.querySelector("select[name='priority']").value.trim();
     let data =Date.now();
-
+    let id = modal.getAttribute("data-id");
+    if (priority === "Medium") {
+        priority = "Medium";
+    } else if (priority === "Low") {
+        priority = "Low";
+    } else {
+        priority = "High";
+    }
     if (!title || !description || !date || !priority) return;
     
     let project = projects.find((proj) => String(proj.ids) === String(id)) || { ids: id, boxs: [] };
@@ -149,10 +164,10 @@ formAddTask.addEventListener("submit", (e) => {
 
 });
 
-let openwindow = document.querySelector("action");
-if (openwindow){
-    renderProjectTasks(project, id);
-}
+// let openwindow = document.querySelector("action");
+// if (openwindow){
+//     renderProjectTasks(project, id);
+// }
 
 function renderProjectTasks(project, id) {
     mainDiv.innerHTML = "";
@@ -163,7 +178,7 @@ function renderProjectTasks(project, id) {
         box.setAttribute("data-id", id);
         let option = document.createElement("div");
         option.className = "option";
-        option.textContent = task.priority;
+        // option.textContent = task.priority;
 
         if (task.priority === "High") {
           option.style.backgroundColor = "red";
@@ -196,7 +211,10 @@ function renderProjectTasks(project, id) {
         let del = document.createElement("button");
         del.className = "delete";
         del.textContent = "Delete";
-        del.addEventListener("click", () => box.remove());
+        del.addEventListener("click", () => {
+            box.remove();
+            deleteTaskbox(task.data);
+        });
         
         
         checked.addEventListener("click", (e) => {
