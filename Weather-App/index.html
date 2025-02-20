@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ODIN |Weather App</title>
+    <script src="./src/index.js" defer></script>
+    <link rel="stylesheet" href="./src/styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div id="intro-section">
+        <h1>Odin | Weather App</h1>
+        <p class="description">
+          Discover the forecast for your city—stay prepared for any weather!
+        </p>
+        <img src="./src/image/67051d4fd00fc9b5f6818014_Weather webpart.svg" alt="Weather" class="weather-icon" />
+      </div>
+      
+      <form id="weather-form">
+        <input
+        type="search"
+        id="weather-search"
+        name="location"
+        placeholder="Search for a city"
+        required
+        />
+        <button type="submit">Get Weather</button>
+        <!-- <a href="https://github.com/PierreGronnier" target="_blank">
+          <img src="icons/github.png" alt="GitHub" class="github-logo" />
+        </a> -->
+      </form>
+      
+      <div id="loading-spinner" style="display: none">Loading...</div>
+
+      <div class="weather-info" id="weather-info" style="display: none">
+        <div class="current-weather">
+          <div class="location-info">
+            <h2 id="location">-</h2>
+            <div class="info">
+              <p id="date">-</p>
+              <p id="time">-</p>
+            </div>
+            <h3 id="days"></h3>
+          </div>
+
+          <div class="weather-main">
+            <img id="main-icon" src="./src/image/Mathematics.svg" alt="Weather icon" />
+            <div class="temperature-container">
+              <p id="temperature"></p>
+            </div>
+          </div>
+          <button id="fahrenheit">Fahrenheit</button>
+
+          <div class="weather-stats">
+            <div class="stat-item">
+              <span class="stat-label">Wind</span>
+              <span class="stat-value" id="wind-speed"></span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">Humidity</span>
+              <span class="stat-value" id="humidity"></span>
+            </div>
+            <div class="stat-item" data-type="conditions">
+              <span class="stat-label">Conditions</span>
+              <span class="stat-value" id="conditions">-</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">Feels like</span>
+              <span class="stat-value" id="feels-like"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="forecast-grid" id="forecast-container"></div>
+      </div>
+    </div>
+  </body>
+</html>
