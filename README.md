@@ -59,6 +59,4 @@ Make your websites dynamic and interactive with JavaScript! You'll create featur
 - More Testing
 - **Project:** Battleship
 
-### Finishing Up with JavaScript
-- Conclusion
 
