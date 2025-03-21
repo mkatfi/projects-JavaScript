@@ -17,7 +17,7 @@ Ensure that you have **Node.js** installed. If not, install it from [Node.js Off
 ### Setup
 1. Clone the repository:
    ```bash
-   git clone https://github.com/mkatfi/Testing-Practice
+   git clone https://github.com/mkatfi/projects-JavaScript/tree/main/Testing-Practice
    cd Testing-Practice
    ```
 
