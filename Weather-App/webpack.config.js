@@ -1,4 +1,3 @@
-
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
@@ -7,7 +6,7 @@ module.exports = {
   entry: "./src/index.js",
   output: {
     filename: "main.js",
-    path: path.resolve(__dirname, "dist"),
+    path: path.resolve(__dirname, "public"), // 🔥 Output in "public"
     clean: true,
   },
   devtool: "eval-source-map",
@@ -17,12 +16,13 @@ module.exports = {
     },
     watchFiles: ["./index.html", "./src/**/*.js"],
     compress: true,
-    port: 3080,
+    port: 3080, // 🔥 Changed to avoid conflicts
     hot: true,
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: "./index.html",
+      filename: "index.html", // Ensure correct output
     }),
   ],
   module: {
@@ -34,6 +34,9 @@ module.exports = {
       {
         test: /\.(png|jpg|jpeg|gif|svg)$/,
         type: "asset/resource",
+        generator: {
+          filename: "images/[name][ext]", // 🔥 Store images in "public/images"
+        },
       },
     ],
   },

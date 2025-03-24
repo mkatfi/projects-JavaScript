@@ -3,6 +3,10 @@ import rainIcon from './icons/rain.png';
 import snowIcon from './icons/snow.png';
 import sunIcon from './icons/sun.png';
 import "./styles.css";
+import weatherIcon from "./image/67051d4fd00fc9b5f6818014_Weather webpart.svg";
+
+document.querySelector(".weather-icon").src = weatherIcon;
+
 
 document.addEventListener("DOMContentLoaded", () => {
     const elements = {
